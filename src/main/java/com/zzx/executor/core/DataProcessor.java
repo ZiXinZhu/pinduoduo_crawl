@@ -151,7 +151,7 @@ public class DataProcessor implements Runnable {
                     new HttpEntity<>(params.toJSONString(), headers);
             ResponseEntity<String> response = null;
             try {
-                response = restTemplate.exchange("http://47.106.223.127:8983/pinduoduo/notify", HttpMethod.POST,
+                response = restTemplate.exchange("http://47.112.101.44:8983/pinduoduo/notify", HttpMethod.POST,
                         requestEntity, String.class);
             } catch (Exception e) {
                 e.printStackTrace();

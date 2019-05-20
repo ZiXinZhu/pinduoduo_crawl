@@ -2,10 +2,7 @@ package com.zzx.executor.dao;
 
 
 import com.zzx.executor.entity.TradeEntity;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -25,4 +22,10 @@ public interface TradeEntityMapper {
                                  @Param("tradeTime") String tradeTime,
                                  @Param("money") String money,
                                  @Param("bankAccount") String bankAccount);
+    @Select("SELECT * FROM t_trade WHERE report=\"00\" AND trade_date=#{tradeDate} ORDER BY trade_time desc;")
+    List<TradeEntity> rereport(@Param("tradeDate") String tradeDate);
+
+    @Update("UPDATE t_trade SET report=TRUE WHERE remark=#{remark};")
+    int upda(@Param("remark") String remark);
+
 }
